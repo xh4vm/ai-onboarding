@@ -23,6 +23,7 @@ pyjwt = "^2.8.0"
 passlib = "^1.7.4"
 asyncpg = "^0.29.0"
 redis = "^5.0.1"
+psycopg2-binary = "^2.9.9"
 
 
 [build-system]
