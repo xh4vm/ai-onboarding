@@ -1,7 +1,7 @@
 x-base-service: &base_service
   env_file: .env
   networks:
-    - datawagon
+    - gigahack
 
 x-redis: &base_redis
   image: redis:7.2.2-alpine
@@ -147,6 +147,23 @@ services:
       - ${ONBOARDING_PANEL_PORT}
     healthcheck:
       test: curl http://onboarding_panel:${ONBOARDING_PANEL_PORT} >/dev/null; if [[ $$? == 52 ]]; then echo 0; else echo 1; fi
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  auth:
+    <<: *base_service
+    build: ./backend/auth
+    container_name: auth
+    env_file: .env
+    profiles:
+      - dev
+    volumes:
+      - ./backend/auth:/opt/auth
+    expose:
+      - ${AUTH_PORT}
+    healthcheck:
+      test: curl http://auth:${AUTH_PORT} >/dev/null; if [[ $$? == 52 ]]; then echo 0; else echo 1; fi
       interval: 30s
       timeout: 10s
       retries: 5
@@ -313,5 +330,5 @@ volumes:
   elasticsearch-data:
 
 networks:
-  datawagon:
+  gigahack:
     driver: bridge

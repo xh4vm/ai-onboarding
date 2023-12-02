@@ -1,4 +1,4 @@
-FROM python:3.11-slim AS onboarding-panel-builder
+FROM python:3.11-slim AS auth-builder
 
 WORKDIR /opt
 COPY requirements.txt ./
@@ -10,10 +10,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends gcc musl-dev li
 
 FROM python:3.11-slim
 
-COPY --from=onboarding-panel-builder /opt /opt
-COPY --from=onboarding-panel-builder /usr/lib/ /usr/lib/
+COPY --from=auth-builder /opt /opt
+COPY --from=auth-builder /usr/lib/ /usr/lib/
 
-WORKDIR /opt/onboarding_panel
+WORKDIR /opt/auth
 ENTRYPOINT ["/bin/bash", "-c", "chmod +x ./start.sh && ./start.sh"]
 
 COPY . .
