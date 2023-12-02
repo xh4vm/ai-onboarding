@@ -12,7 +12,7 @@ class Question(BaseModel):
 
 class Answer(BaseModel):
 
-    question_id: UUID = Column(ForeignKey('questions.id'), nullable=False)
+    question_id: UUID = Column(UUID(as_uuid=True), nullable=False, unique=True, primary_key=True)
     message: str = Column(String(65536), nullable=False)
 
 

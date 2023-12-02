@@ -17,3 +17,4 @@ asyncpg==0.29.0
 elasticsearch==8.11.0
 elastic-transport==8.10.0
 websockets==12.0
+gigachain==0.0.343

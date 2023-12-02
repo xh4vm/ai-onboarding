@@ -11,6 +11,7 @@ from .core.config import CONFIG, REDIS_CONFIG, POSTGRES, ELASTIC_CONFIG
 from .containers.messages import ServiceContainer as MessagesServiceContainer
 from .containers.onboarding import ServiceContainer as ChatServiceContainer
 from .containers.jwt import ServiceContainer as JWTServiceContainer
+from .containers.gigachat import ServiceContainer as GegachatServiceContainer
 from .containers.cache import CacheResource, RedisCacheResource
 from .containers.search import ElasticSearchResource, SearchResource
 from .api.v1.chat import router as chat_router
@@ -26,7 +27,8 @@ def register_di_containers():
     chat_container.config.from_dict({
         "db": {"url": POSTGRES.URL}
     })
-
+    
+    GegachatServiceContainer()
     JWTServiceContainer(cache_svc=redis_resource)
 
 
@@ -59,57 +61,6 @@ def create_app():
 
 
 app = create_app()
-
-html = """
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Chat</title>
-    </head>
-    <body>
-        <h1>WebSocket Chat</h1>
-        <form action="" onsubmit="sendMessage(event)">
-            <label>Item ID: <input type="text" id="itemId" autocomplete="off" value="foo"/></label>
-            <label>Token: <input type="text" id="token" autocomplete="off" value="some-key-token"/></label>
-            <button onclick="connect(event)">Connect</button>
-            <hr>
-            <label>Message: <input type="text" id="messageText" autocomplete="off"/></label>
-            <button>Send</button>
-        </form>
-        <ul id='messages'>
-        </ul>
-        <script>
-        var ws = null;
-        var ws2 = null;
-            function connect(event) {
-                var itemId = document.getElementById("itemId")
-                var token = document.getElementById("token")
-                ws = new WebSocket("ws://localhost/onboarding/api/v1/chat/ws?token=" + token.value);
-                ws.onmessage = function(event) {
-                    var messages = document.getElementById('messages')
-                    var message = document.createElement('li')
-                    var content = document.createTextNode(event.data)
-                    message.appendChild(content)
-                    messages.appendChild(message)
-                };
-                
-                event.preventDefault()
-            }
-            function sendMessage(event) {
-                var input = document.getElementById("messageText")
-                ws.send(input.value)
-                input.value = ''
-                event.preventDefault()
-            }
-        </script>
-    </body>
-</html>
-"""
-
-
-@app.get("/onboarding")
-async def get():
-    return HTMLResponse(html)
 
 
 #TODO

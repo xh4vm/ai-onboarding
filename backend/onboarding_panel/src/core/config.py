@@ -73,6 +73,14 @@ class ElasticsearchIndices(BaseSettings):
         env_prefix = "INDEX_"
 
 
+class GigachatSettings(BaseSettings):
+    SECRET: str
+
+    class Config:
+        env_prefix = "GIGACHAT_"
+
+
+GIGACHAT_CONFIG: GigachatSettings = GigachatSettings()
 POSTGRES: PostgresSettings = PostgresSettings()
 
 
