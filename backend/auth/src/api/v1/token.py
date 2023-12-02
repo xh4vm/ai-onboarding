@@ -7,7 +7,7 @@ from src.services.token.access import AccessTokenService
 from src.containers.jwt import ServiceContainer as JWTServiceContainer
 from src.models.user import User
 from src.services.token.refresh import RefreshTokenService
-from src.services.jwt import JWTService
+from module.services.jwt import JWTService
 from src.models.token import TokenPair
 
 

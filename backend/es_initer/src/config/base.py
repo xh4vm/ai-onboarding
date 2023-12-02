@@ -54,7 +54,7 @@ SECURITY_KIBANA_CONFIG: SecurityKibanaSettings = SecurityKibanaSettings()
 
 SECURITY_CONFIG: list[BaseSecuritySettings] = [
     SECURITY_ELASTIC_CONFIG,
-    # SECURITY_KIBANA_CONFIG,
+    SECURITY_KIBANA_CONFIG,
 ]
 
 ELASTIC_CONFIG: ElasticsearchSettings = ElasticsearchSettings()

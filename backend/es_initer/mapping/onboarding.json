@@ -40,5 +40,66 @@
     }
   },
   "mappings": {
+    "dynamic": "strict",
+    "properties": {
+      "@timestamp": {
+        "type":   "date"
+      },
+      "id": {
+        "type": "keyword"
+      },
+      "question": {
+        "dynamic": "strict",
+        "properties": {
+          "id": {
+            "type": "keyword"
+          },
+          "user_id": {
+            "type": "keyword"
+          },
+          "message": {
+            "type": "text",
+            "analyzer": "ru_en",
+            "fields": {
+              "keyword": { 
+                "type":  "keyword"
+              }
+            }
+          },
+          "created_at": {
+            "type": "date"
+          },
+          "updated_at": {
+            "type": "date"
+          }
+        }
+      },
+      "answer": {
+        "dynamic": "strict",
+        "properties": {
+          "id": {
+            "type": "keyword"
+          },
+          "question_id": {
+            "type": "keyword"
+          },
+          "message": {
+            "type": "text",
+            "analyzer": "ru_en",
+            "fields": {
+              "keyword": { 
+                "type":  "keyword"
+              }
+            }
+          },
+          "created_at": {
+            "type": "date"
+          },
+          "updated_at": {
+            "type": "date"
+          }
+        }
+      }
+    }
   }
 }

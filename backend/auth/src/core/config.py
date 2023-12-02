@@ -1,5 +1,5 @@
 import backoff
-from pydantic import Field, BaseModel
+from pydantic import Field
 from pydantic_settings import BaseSettings
 from typing import Any
 

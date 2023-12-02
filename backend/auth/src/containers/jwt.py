@@ -1,6 +1,6 @@
 from dependency_injector import containers, providers
 
-from ..services.jwt import JWTService
+from module.services.jwt import JWTService
 from .base import BaseContainer
 
 

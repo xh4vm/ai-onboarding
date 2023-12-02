@@ -1,6 +1,6 @@
 from typing import Any
 
-from .base import BaseTokenService, revoke_key, get_jti, create_token
+from .base import BaseTokenService, revoke_key, create_token
 
 
 class AccessTokenService(BaseTokenService):

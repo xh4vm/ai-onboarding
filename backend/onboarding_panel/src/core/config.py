@@ -38,6 +38,20 @@ class PostgresSettings(BaseSettings):
             "host": self.HOST,
             "port": self.PORT,
         }
+    
+    @property
+    def URL(self):
+        return f'postgresql+asyncpg://{self.USER}:{self.PASSWORD}@{self.HOST}:{self.PORT}/{self.NAME}'
+    
+
+class RedisSettings(BaseSettings):
+    PASSWORD: str
+    HOST: str
+    PORT: int
+    CACHE_EXPIRE: int
+
+    class Config:
+        env_prefix = "REDIS_"
 
 
 POSTGRES: PostgresSettings = PostgresSettings()
@@ -48,6 +62,7 @@ class Config(BaseSettings):
 
 
 CONFIG = Config()
+REDIS_CONFIG = RedisSettings()
 BACKOFF_CONFIG: dict[str, Any] = {
     "wait_gen": backoff.expo,
     "exception": Exception,

@@ -5,7 +5,7 @@ from typing import Annotated
 from src.containers.auth import ServiceContainer as AuthServiceContainer
 from src.containers.jwt import ServiceContainer as JWTServiceContainer
 from src.services.user import UserService
-from src.services.jwt import JWTService
+from module.services.jwt import JWTService
 from src.services.token.access import AccessTokenService
 from src.services.token.refresh import RefreshTokenService
 from src.models.user import User, UserData
