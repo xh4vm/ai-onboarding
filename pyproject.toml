@@ -1,0 +1,30 @@
+[tool.poetry]
+name = "ai-onboarding"
+version = "0.1.0"
+description = ""
+authors = ["xh4vm <h4vm@yandex.ru>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+backoff = "^2.2.1"
+pydantic = "^2.5.2"
+pydantic-settings = "^2.1.0"
+elasticsearch = "^8.11.0"
+elastic-transport = "^8.10.0"
+requests = "^2.31.0"
+fastapi = "^0.104.1"
+starlette-context = "^0.3.6"
+dependency-injector = "^4.41.0"
+sqlalchemy = "^2.0.23"
+orjson = "^3.9.10"
+loguru = "^0.7.2"
+pyjwt = "^2.8.0"
+passlib = "^1.7.4"
+asyncpg = "^0.29.0"
+redis = "^5.0.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
