@@ -71,13 +71,14 @@ class JWTService:
     def __init__(self, cache_svc: BaseCache):
         self.cache_svc = cache_svc
 
-    async def required(self, request: Request, refresh: bool = False) -> dict[str, Any]:
+    async def required(self, request: Request, token: str | None = None, refresh: bool = False) -> dict[str, Any]:
 
-        try:
-            token_header = TokenHeader(token=request.headers.get('Authorization'))
-            token = token_header.get_payload()
-        except ValidationError:
-            raise DecodeError("Bad token format")
+        if token is None:
+            try:
+                token_header = TokenHeader(token=request.headers.get('Authorization'))
+                token = token_header.get_payload()
+            except ValidationError:
+                raise DecodeError("Bad token format")
 
         payload = decode_token(token)
 

@@ -1,7 +1,6 @@
 from typing import Any
 
 import backoff
-from pydantic import Field
 from pydantic_settings import BaseSettings
 
 
