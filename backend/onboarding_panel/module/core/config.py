@@ -4,6 +4,17 @@ from pydantic_settings import BaseSettings
 from typing import Any
 
 
+class JWTSettings(BaseSettings):
+    SECRET: str
+    ALGORITHM: str
+    DECODE_ALGORITHMS: list[str]
+    TTL_ACCESS_TOKEN: int
+    TTL_REFRESH_TOKEN: int
+
+    class Config:
+        env_prefix = "AUTH_JWT_"
+
+
 class AppSettings(BaseSettings):
     HOST: str = Field("localhost")
     PORT: int
@@ -14,9 +25,10 @@ class AppSettings(BaseSettings):
     API_VERSION: str
     SWAGGER_PATH: str
     JSON_SWAGGER_PATH: str
+    JWT: JWTSettings = JWTSettings()
 
     class Config:
-        env_prefix = "ONBOARDING_PANEL_"
+        env_prefix = "AUTH_"
 
 
 class PostgresSettings(BaseSettings):
@@ -42,7 +54,7 @@ class PostgresSettings(BaseSettings):
     @property
     def URL(self):
         return f'postgresql+asyncpg://{self.USER}:{self.PASSWORD}@{self.HOST}:{self.PORT}/{self.NAME}'
-    
+
 
 class RedisSettings(BaseSettings):
     PASSWORD: str

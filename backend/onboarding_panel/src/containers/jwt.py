@@ -6,7 +6,7 @@ from .base import BaseContainer
 
 class ServiceContainer(BaseContainer):
 
-    wiring_config = containers.WiringConfiguration(modules=['..api.v1.auth', '..api.v1.token'])
+    wiring_config = containers.WiringConfiguration(modules=['..api.v1.chat'])
     
     config = providers.Configuration()
 
