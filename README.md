@@ -58,3 +58,4 @@ make dev
 - [UserFlow](https://miro.com/app/board/uXjVNHqnQEs=/?share_link_id=661963652395)
 - [Design](https://www.figma.com/file/lpEJl9nvFcWcO0RXV49V6s/GigaChat?type=design&node-id=0-1&mode=design)
 - [Презентация](https://drive.google.com/drive/folders/1RyQes6j32EB0TZiysGlvVfHsikXHn-Mt?usp=sharing)
+- [Демонстрация](https://disk.yandex.ru/d/FZna23gHmXciiQ)
