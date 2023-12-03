@@ -106,7 +106,7 @@ class BaseService(ABC):
         if data is None:
             logger.info(f'Кеш в методе "search" пo ключу {cache_key} не найден.')
             data: SearchResult = await self.search_svc.search(index=self.index, params=search_params)
-            await self.cache_svc.set(key=cache_key, data=data.model_dump())
+            # await self.cache_svc.set(key=cache_key, data=data.model_dump())
         else:
             logger.info(f'Кеш в методе "search" пo ключу {cache_key} найден.')
             data = SearchResult(**data)

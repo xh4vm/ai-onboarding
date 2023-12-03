@@ -1,11 +1,12 @@
 from fastapi import FastAPI, Request
-from fastapi.responses import ORJSONResponse, HTMLResponse
+from fastapi.responses import ORJSONResponse
 from starlette.middleware import Middleware
 from starlette_context import plugins
 from starlette_context.middleware import RawContextMiddleware
 from redis.asyncio import Redis
 from jwt.exceptions import PyJWTError
 from elasticsearch import AsyncElasticsearch
+from fastapi.middleware.cors import CORSMiddleware
 
 from .core.config import CONFIG, REDIS_CONFIG, POSTGRES, ELASTIC_CONFIG
 from .containers.messages import ServiceContainer as MessagesServiceContainer
@@ -27,7 +28,7 @@ def register_di_containers():
     chat_container.config.from_dict({
         "db": {"url": POSTGRES.URL}
     })
-    
+
     GegachatServiceContainer()
     JWTServiceContainer(cache_svc=redis_resource)
 
@@ -61,6 +62,16 @@ def create_app():
 
 
 app = create_app()
+
+origins = ["*"]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 #TODO
