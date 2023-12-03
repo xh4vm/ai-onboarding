@@ -1,0 +1,26 @@
+@import '../../../styles';
+
+.primary-button {
+  background-color: $primaryBtn;
+  color: $white;
+  font-family: 'SB Sans Text', sans-serif;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-align: center;
+  padding: 10px 20px;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  outline: none;
+  transition: background-color 0.3s ease; // Плавное изменение цвета
+
+  &:hover {
+    background-color: $secondaryBtn;
+  }
+
+  &:active {
+    background-color: $white;
+  }
+}
