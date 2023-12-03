@@ -1,0 +1,68 @@
+@import "../../styles";
+
+.navigation-menu {
+  width: 200px;
+  height: 100vh;
+  background-color: $white;
+  //padding: 82px 83px 82px 83px;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  overflow-y: auto;
+  border-right: 2px solid $brandText;
+
+  .logo {
+    margin-top: 44px;
+    margin-bottom: 154px;
+    margin-left: 20%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .menu-item {
+    color: $primaryText;
+    font-family: 'SB Sans Text', sans-serif;
+    font-size: 20px;
+    line-height: 25.08px;
+    font-weight: 600;
+    text-decoration: none;
+    margin-bottom: 40px;
+    transition: color 0.3s ease;
+    cursor: pointer;
+
+    &:hover {
+      color: $brandText;
+    }
+  }
+
+  .spacer {
+    flex-grow: 1;
+  }
+
+  .logout-text {
+    color: $primaryText;
+    font-family: 'SB Sans Text', sans-serif;
+    font-size: 20px;
+    line-height: 25.08px;
+    font-weight: 400;
+    text-decoration: none;
+    margin-top: auto;
+    transition: color 0.3s ease;
+    margin-bottom: 15px;
+
+    &:hover {
+      color: $brandText;
+    }
+  }
+}
+
+.active {
+  color: $gradientIcon;
+  font-weight: 600;
+  background: $gradientIcon;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
