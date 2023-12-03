@@ -36,6 +36,11 @@
 - Data Management
     - datasets: Библиотека для управления и работе с различными датасетами.
 
+## Архитектура
+
+![Arch](https://github.com/xh4vm/ai-onboarding/assets/87658711/5398e363-556f-4cfb-857f-af651c42dc79)
+
+
 ## Запуск проекта
 
 ``` 
